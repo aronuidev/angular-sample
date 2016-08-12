@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="angular/angular.js"></script>
+    <script src="services/dataService.js"></script>
+    <script src="script.js"></script>
+</head>
+<body ng-app="userApp">
+<div ng-controller="userController as vm">
+    <div>
+        Select user :
+        <select ng-model="userNames">
+            <option ng-repeat="user in vm.usersData|sortUserNamesFltr:vm.userSort">{{user.username}}</option>
+        </select>
+    </div>
+    <br><br>
+    <div>
+        Select Sort options :
+        <Select ng-options="user for user in vm.userSortOptions" ng-model="vm.userSort"></Select>
+    </div>
+    <br><br>
+    <div ng-repeat="user in vm.usersData|sortUserNamesFltr:vm.userSort">
+        {{user.username}}
+    </div>
+</div>
+</body>
+</html>
